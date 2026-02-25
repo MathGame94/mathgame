@@ -1,7 +1,7 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Game.css";
-import AdditionTool from "./AdditionTool.JSX";
+import AdditionTool from "./AdditionTool";
 import SubtractionTool from "./SubtractionTool";
 import DivisionTool from "./DivisionTool";
 import MultiplicationTool from "./MultiplicationTool";
