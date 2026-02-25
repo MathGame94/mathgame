@@ -1,0 +1,86 @@
+body {
+  margin: 0;
+  font-family: 'Arial', sans-serif;
+  background: #7e3bbd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+}
+
+.login-container {
+    margin-left: 25%;
+    margin-top: 10%;
+    display: flex;
+    flex-direction: column;
+  background: #fff;
+  padding: 40px 30px;
+  border-radius: 15px;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+  width: 700px;
+    height: 300PX;
+  text-align: center;
+  gap: 70px;
+
+  /* Animation */
+  opacity: 0;
+  transform: translateY(30px);
+  animation: slideFadeIn 0.8s forwards;
+}
+
+@keyframes slideFadeIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.login-form h2 {
+  margin-bottom: 25px;
+  color: #4B3F72;
+  font-weight: 600;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 15px;
+  border: 2px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: border 0.3s;
+}
+
+.login-form input:focus {
+  border-color: #7e3bbd;
+  outline: none;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 12px;
+  background: #4B3F72;
+  color: #fff;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.login-form button:hover {
+  background: #7e3bbd;
+}
+
+.login-form button:disabled {
+  background: #aaa;
+  cursor: not-allowed;
+}
+
+.error {
+  color: red;
+  margin-bottom: 15px;
+  font-size: 14px;
+}

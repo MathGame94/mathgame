@@ -1,0 +1,296 @@
+/* ===== GLOBAL ===== */
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background: black;
+  font-family: "Segoe UI", sans-serif;
+}
+
+/* ===== MENU CONTAINER ===== */
+
+.menu-container {
+  min-height: 100vh;
+  text-align: center;
+  padding: 40px 20px;
+  color: white;
+
+  background: radial-gradient(circle at center, blue 0%, #0c050c 80%);
+
+  animation: fadeIn 1s ease-out;
+  transition: transform .2s linear;
+
+  position: relative;
+  overflow: hidden;
+}
+
+/* ===== PARTICLE BACKGROUND ===== */
+
+.menu-container::before {
+  content: "";
+  position: absolute;
+  width: 200%;
+  height: 200%;
+
+  background-image:
+    radial-gradient(circle, rgba(0,255,255,.15) 2px, transparent 2px);
+
+  background-size: 40px 40px;
+  animation: particlesMove 30s linear infinite;
+  z-index: 0;
+}
+
+@keyframes particlesMove {
+  from { transform: translateY(0); }
+  to { transform: translateY(-500px); }
+}
+
+.menu-container * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== TITLES ===== */
+
+.menu-container h1 {
+  font-size: 48px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+
+  background: linear-gradient(45deg,#00eaff,#0072ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.title {
+  margin: 30px 0 20px;
+  opacity: .9;
+}
+
+/* ===== LEVEL CARDS ===== */
+
+.levels-container {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  perspective: 1000px;
+  margin-bottom: 30px;
+}
+
+/* Card base */
+.level-card {
+  width: 220px;
+  height: 260px;
+  cursor: pointer;
+  transform: rotate(-5deg);
+  animation: slideUp .8s ease forwards;
+  opacity: 0;
+}
+
+.level-card:nth-child(1){animation-delay:.2s}
+.level-card:nth-child(2){animation-delay:.4s}
+.level-card:nth-child(3){animation-delay:.6s}
+
+.level-card:nth-child(2){ transform: rotate(0deg);}
+.level-card:nth-child(3){ transform: rotate(5deg);}
+
+/* Inner 3D flip */
+.card-inner {
+  width: 100%;
+  height: 100%;
+  transition: transform .6s;
+  transform-style: preserve-3d;
+  position: relative;
+  border-radius: 18px;
+}
+
+.level-card:hover .card-inner {
+  transform: rotateY(180deg) scale(1.05);
+}
+
+/* Glow when active */
+.level-card.active .card-inner {
+  animation: glowPulse 1.5s infinite alternate;
+}
+.level-card.active .card-front  ,.card-back {
+  outline: 4px solid #00eaff;
+  box-shadow: 0 0 25px #00eaff;
+  filter: brightness(1.2);
+  transform: scale(1.05);
+}
+
+
+/* Front & Back */
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 18px;
+  backface-visibility: hidden;
+
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  padding: 15px;
+
+  font-weight: bold;
+  font-size: 20px;
+}
+
+/* Poster images */
+.card1 {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.7), transparent),
+    url("https://images.unsplash.com/photo-1635070041078-e363dbe005cb");
+  background-size: cover;
+  background-position: center;
+}
+
+.card2 {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.7), transparent),
+    url("https://images.unsplash.com/photo-1509228627152-72ae9ae6848d");
+  background-size: cover;
+  background-position: center;
+}
+
+.card3 {
+  background:
+    linear-gradient(to top, rgba(0,0,0,.7), transparent),
+    url("https://images.unsplash.com/photo-1596495578065-6e0763fa1178");
+  background-size: cover;
+  background-position: center;
+}
+
+/* Back side */
+.card-back {
+  background: linear-gradient(145deg,#00c6ff,#0072ff);
+  transform: rotateY(180deg);
+  align-items: center;
+  text-align: center;
+}
+
+/* ===== OPERATION BUTTONS ===== */
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+}
+
+.buttons button {
+  padding: 16px 24px;
+  border-radius: 14px;
+  border: none;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+
+  background: linear-gradient(145deg,#1e2330,#10141c);
+  box-shadow: 0 6px 0 #0a0d12;
+  transition: .2s;
+}
+
+.buttons button:hover {
+  transform: translateY(-4px);
+}
+
+.buttons button:active {
+  transform: translateY(3px);
+  box-shadow: 0 2px 0 #0a0d12;
+}
+
+.buttons button.active {
+  background: linear-gradient(145deg,#00eaff,#0072ff);
+  box-shadow: 0 0 20px #00eaff;
+}
+
+/* ===== START BUTTON ===== */
+
+.start-btn {
+  margin-top: 25px;
+  padding: 18px 45px;
+  font-size: 22px;
+  border-radius: 16px;
+  border: none;
+  cursor: pointer;
+  color: white;
+
+  background: linear-gradient(145deg,#ff512f,#dd2476);
+  box-shadow: 0 8px 0 #8f143f;
+
+  transition: .2s;
+}
+
+.start-btn:hover {
+  transform: translateY(-5px) scale(1.05);
+}
+
+.start-btn:active {
+  transform: translateY(4px);
+  box-shadow: 0 3px 0 #8f143f;
+}
+
+.start-btn:disabled {
+  background: gray;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ===== ANIMATIONS ===== */
+
+@keyframes fadeIn {
+  from {opacity:0; transform:scale(.9);}
+  to {opacity:1; transform:scale(1);}
+}
+
+@keyframes slideUp {
+  from {transform:translateY(60px); opacity:0;}
+  to {transform:translateY(0); opacity:1;}
+}
+
+@keyframes glowPulse {
+  from { box-shadow: 0 0 10px cyan; }
+  to { box-shadow: 0 0 35px cyan; }
+}
+
+/* ===== SCREEN SHAKE ===== */
+
+.shake {
+  animation: screenShake .4s;
+}
+
+@keyframes screenShake {
+  0%{transform:translateX(0)}
+  25%{transform:translateX(-10px)}
+  50%{transform:translateX(10px)}
+  75%{transform:translateX(-6px)}
+  100%{transform:translateX(0)}
+}
+
+/* ===== MOBILE RESPONSIVE ===== */
+
+@media (max-width: 768px) {
+
+  .menu-container h1 {
+    font-size: 36px;
+  }
+
+  .level-card {
+    width: 180px;
+    height: 220px;
+  }
+
+  .buttons button {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .start-btn {
+    font-size: 18px;
+    padding: 14px 30px;
+  }
+}

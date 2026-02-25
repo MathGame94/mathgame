@@ -1,0 +1,137 @@
+.long-op {
+    margin: 20px auto;
+    width: fit-content;
+   background: #f6f4ff;
+  border-left: 5px solid #7b61ff;
+  padding: 12px 15px;
+  border-radius: 12px;
+  margin-bottom: 25px;
+  text-align: center;
+}
+
+
+.row {
+    margin-top: 15px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    font-size: large;
+}
+.rowdiv {
+    margin-top: 5px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    width: 400px;
+    font-size: large;
+}
+.inputdivtop {
+    margin-left: 53%;
+    margin-top: 5px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    width: 100px;
+    font-size: large;
+    gap: 5px;
+}
+.inputdivbottom {
+    margin-left: 41%;
+    margin-top: 5px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    width: 110px;
+    font-size: large;
+    gap: 5px;
+}
+.inputdivbottom1 {
+    margin-left: 36%;
+    margin-top: 5px;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    width: 155px;
+    font-size: large;
+    gap: 5px;
+}
+.digit {
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    font-size: 18px;
+}
+.operation{
+    width: 250px;
+    display: flex;
+    justify-content: right;
+}
+
+.operation1{
+    width: 270px;
+    display: flex;
+    justify-content: right;
+}
+
+.cell {
+    width: 40px;
+    height: 25px;
+    margin: 2px;
+    text-align: center;
+    font-size: 18px;
+      transition: 0.3s;
+}
+
+.cellinput{
+    width: 20px;
+    height: 25px;
+    text-align: center;
+}
+
+.cell1 {
+    display: flex;
+    gap: 20px;
+    width: 60px;
+    height: 25px;
+    text-align: center;
+    font-size: 18px;
+      transition: 0.3s;
+      border-top: 2px solid black;
+      border-left: 2px solid   black;
+      padding-top: 7px;
+}
+
+.sp_1 {
+ margin-left: 10px;
+}
+
+.cell2 {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+    font-size: 18px;
+      transition: 0.3s;
+      border-bottom: 2px solid black;
+      padding-top: 7px;
+}
+.result{
+    border: 0px ;
+    border-radius: 4px;
+}
+.clearBTN {
+  background: #7b61ff;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  margin-top: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+  height: 35px;
+}
+
+
+.step {
+    border: 1px solid #888;
+}
