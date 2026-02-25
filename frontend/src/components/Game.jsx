@@ -1,10 +1,10 @@
 import { useParams, useSearchParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import "./Game.css";
-import AdditionTool from "./AdditionTool";
-import SubtractionTool from "./SubtractionTool";
-import DivisionTool from "./DivisionTool";
-import MultiplicationTool from "./MultiplicationTool";
+import AdditionTool from "./AdditionTool.jsx";
+import SubtractionTool from "./SubtractionTool.jsx";
+import DivisionTool from "./DivisionTool.jsx";
+import MultiplicationTool from "./MultiplicationTool.jsx";
 
 const Game = () => {
   const { operation } = useParams();
