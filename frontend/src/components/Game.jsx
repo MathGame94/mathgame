@@ -17,7 +17,7 @@ const Game = () => {
   const [message, setMessage] = useState("");
   const [support, setSupport] = useState(false);
 
-
+const x =0; 
     const [stars,setStars]=useState(0);
     const correctSound = new Audio("/sound/correct.mp3");
   const wrongSound = new Audio("/sound/wrong.mp3");
