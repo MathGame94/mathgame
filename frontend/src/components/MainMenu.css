@@ -348,3 +348,45 @@ body {
     max-width: 280px;
   }
 }
+@media (max-width: 480px) {
+
+  .levels-container {
+    flex-direction: column;   /* أهم سطر */
+    align-items: center;
+    gap: 25px;
+  }
+
+  .level-card {
+    width: 90%;
+    max-width: 300px;
+    height: 220px;
+    transform: rotate(0deg) !important; /* نلغي الميلان بالموبايل */
+  }
+
+  .level-card:nth-child(1),
+  .level-card:nth-child(2),
+  .level-card:nth-child(3) {
+    transform: rotate(0deg);
+  }
+
+  .card-front,
+  .card-back {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons button {
+    width: 90%;
+    max-width: 300px;
+  }
+
+  .start-btn {
+    width: 90%;
+    max-width: 300px;
+  }
+}
