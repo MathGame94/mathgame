@@ -3,6 +3,7 @@
 body {
   margin: 0;
   overflow-x: hidden;
+  overflow-y: auto;
   background: black;
   font-family: "Segoe UI", sans-serif;
 }
@@ -21,7 +22,8 @@ body {
   transition: transform .2s linear;
 
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 /* ===== PARTICLE BACKGROUND ===== */
@@ -292,5 +294,57 @@ body {
   .start-btn {
     font-size: 18px;
     padding: 14px 30px;
+  }
+}
+@media (max-width: 768px) {
+
+  .menu-container h1 {
+    font-size: 36px;
+  }
+
+  .level-card {
+    width: 180px;
+    height: 220px;
+  }
+
+  .buttons button {
+    padding: 12px 18px;
+    font-size: 14px;
+  }
+
+  .start-btn {
+    font-size: 18px;
+    padding: 14px 30px;
+  }
+}
+
+@media (max-width: 480px) {
+
+  .menu-container h1 {
+    font-size: 28px;
+  }
+
+  .levels-container {
+    gap: 20px;
+  }
+
+  .level-card {
+    width: 150px;
+    height: 190px;
+  }
+
+  .buttons {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .buttons button {
+    width: 100%;
+    max-width: 250px;
+  }
+
+  .start-btn {
+    width: 100%;
+    max-width: 280px;
   }
 }

@@ -1,12 +1,9 @@
-body {
+.login-page {
   margin: 0;
   font-family: 'Arial', sans-serif;
-  background: #7e3bbd;
+  background: #1e1e2f;
   display: flex;
-  justify-content: center;
-  align-items: center;
   height: 100vh;
-  overflow: hidden;
   display: flex;
 }
 
@@ -19,7 +16,7 @@ body {
   padding: 40px 30px;
   border-radius: 15px;
   box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-  width: 700px;
+  max-width: 700px; /* was 700px */
     height: 300PX;
   text-align: center;
   gap: 70px;
@@ -83,4 +80,26 @@ body {
   color: red;
   margin-bottom: 15px;
   font-size: 14px;
+}
+@media (max-width: 768px) {
+  .login-container {
+    gap: 40px;
+    padding: 30px 20px;
+  }
+}
+
+@media (max-width: 480px) {
+  .login-container {
+    gap: 30px;
+    padding: 25px 15px;
+  }
+
+  .login-form h2 {
+    font-size: 20px;
+  }
+
+  .login-form input,
+  .login-form button {
+    font-size: 14px;
+  }
 }

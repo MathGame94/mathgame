@@ -80,13 +80,12 @@ const x =0;
       } else {
         const a = Math.floor(Math.random() * max) + 1;
         const b = Math.floor(Math.random() * max) + 1;
-
         setNum1(a);
         setNum2(b);
         setAnswer("");
       }
     } else {
-      if (level === "10-12") {
+      if (level === "6-9") {
       const divisor = Math.floor(Math.random() * max ) + 1;
       const quotient = Math.floor(Math.random() * 10) ;
       setNum1(quotient);
