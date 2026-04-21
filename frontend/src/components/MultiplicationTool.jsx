@@ -656,7 +656,7 @@ if (
       <button className="clearBTN" onClick={handleClear}>
         clear
       </button>
-      <ToastContainer position="bottom-right" autoClose={3000} />
+      <ToastContainer position="bottom-right" autoClose={1000} />
     </div>
   );
 };
