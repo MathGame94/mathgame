@@ -915,7 +915,7 @@ useEffect(() => {
         <button className="clearBTN" onClick={handleClear}>
           clear
         </button>
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="bottom-right" autoClose={3000} />
       </div>
     );
   } else {
@@ -1239,7 +1239,7 @@ useEffect(() => {
         <button className="clearBTN" onClick={handleClear}>
           clear
         </button>
-        <ToastContainer position="top-right" autoClose={3000} />
+        <ToastContainer position="bottom-right" autoClose={3000} />
       </div>
     );
   }
