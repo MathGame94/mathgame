@@ -657,7 +657,7 @@ if (
         clear
       </button>
       <ToastContainer   position="top-right"
-  style={{ top: "30%", transform: "translateY(-50%)" }}
+  style={{ top: "40%", transform: "translateY(-50%)" }}
  autoClose={2000} />
     </div>
   );
