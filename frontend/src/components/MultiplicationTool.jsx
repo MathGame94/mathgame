@@ -656,8 +656,8 @@ if (
       <button className="clearBTN" onClick={handleClear}>
         clear
       </button>
-      <ToastContainer   position="top-right"
-  style={{ top: "45%", transform: "translateY(-50%)" }}
+      <ToastContainer   position="bottom-center"
+  style={{ bottom: "20%", transform: "translateY(-50%)" }}
  autoClose={2000} />
     </div>
   );
