@@ -915,8 +915,9 @@ useEffect(() => {
         <button className="clearBTN" onClick={handleClear}>
           clear
         </button>
-        <ToastContainer position="bottom-right" autoClose={3000} />
-      </div>
+ <ToastContainer   position="top-right"
+  style={{ top: "50%", transform: "translateY(-50%)" }}
+ autoClose={2000} />      </div>
     );
   } else {
     return (
@@ -1239,8 +1240,9 @@ useEffect(() => {
         <button className="clearBTN" onClick={handleClear}>
           clear
         </button>
-        <ToastContainer position="bottom-right" autoClose={3000} />
-      </div>
+ <ToastContainer   position="top-right"
+  style={{ top: "50%", transform: "translateY(-50%)" }}
+ autoClose={2000} />      </div>
     );
   }
 };
