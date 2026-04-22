@@ -658,7 +658,7 @@ if (
       </button>
       <ToastContainer   position="bottom-center"
   style={{ bottom: "20%", transform: "translateY(-50%)" }}
- autoClose={2000} />
+ autoClose={1000} />
     </div>
   );
 };
