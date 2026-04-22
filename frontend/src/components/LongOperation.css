@@ -1,14 +1,17 @@
-.long-op {
-    margin: 20px auto;
-    width: fit-content;
-   background: #f6f4ff;
-  border-left: 5px solid #7b61ff;
-  padding: 12px 15px;
-  border-radius: 12px;
-  margin-bottom: 25px;
-  text-align: center;
-}
 
+.long-op {
+  margin: 20px auto;
+  /* بدلاً من fit-content، جرب تحديد عرض ثابت أو نسبة مئوية */
+  width: 90%; 
+  max-width: 300px; /* يمنعه من التوسع الزائد في الشاشات الكبيرة */
+  background: #f6f4ff;
+  border-left: 5px solid #7b61ff;
+  padding: 15px 20px;
+  border-radius: 12px;
+  text-align: center;
+  /* إضافة ظل خفيف لإبراز العنصر */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
 
 .row {
     margin-top: 15px;
