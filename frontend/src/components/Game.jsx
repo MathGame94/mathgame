@@ -5,6 +5,8 @@ import AdditionTool from "./AdditionTool.jsx";
 import SubtractionTool from "./SubtractionTool.jsx";
 import DivisionTool from "./DivisionTool.jsx";
 import MultiplicationTool from "./MultiplicationTool.jsx";
+import Lottie from "lottie-react";
+import animationData from "../assets/lottie/teacher.json";
 
 const Game = () => {
   const { operation } = useParams();
@@ -17,15 +19,21 @@ const Game = () => {
   const [message, setMessage] = useState("");
   const [support, setSupport] = useState(false);
 
-const x =0; 
-    const [stars,setStars]=useState(0);
-    const correctSound = new Audio("/sound/correct.mp3");
+  const x = 0;
+  const [stars, setStars] = useState(0);
+  const correctSound = new Audio("/sound/correct.mp3");
   const wrongSound = new Audio("/sound/wrong.mp3");
   const starSound = new Audio("/sound/star.mp3");
 
-
-
-
+  const correctAnswer = new Audio("/sound/rightAnswer.mp3");
+  const wrongAnswer = new Audio("/sound/wrongAnswer.mp3");
+  const letsGo = new Audio("/sound/letsGo.mp3");
+  const putNumber = new Audio("/sound/putNumber.mp3");
+  const inYourHead = new Audio("/sound/inYourHead.mp3");
+  const thenPutNumber = new Audio("/sound/thenPutNumber.mp3");
+  const onYourHand = new Audio("/sound/onYourHand.mp3");
+  const countIncrease = new Audio("/sound/countIncrease.mp3");
+  const closeFingers = new Audio("/sound/closeFingers.mp3");
 
   // 🔢 RANGE BASED ON LEVEL
   const getMaxNumber = () => {
@@ -37,7 +45,7 @@ const x =0;
       setSupport(true);
       return 20;
     }
-    return 99; // 
+    return 99; //
   };
 
   const generateQuestion = () => {
@@ -86,26 +94,23 @@ const x =0;
       }
     } else {
       if (level === "6-9") {
-      const divisor = Math.floor(Math.random() * max ) + 1;
-      const quotient = Math.floor(Math.random() * 10) ;
-      setNum1(quotient);
-      setNum2(divisor);
-      setAnswer("");
-      }else {// ✅ EXACT DIVISION
-      const divisor = Math.floor(Math.random() * (max / 2)) + 1;
-      const quotient = Math.floor(Math.random() * 10) + 1;
-      const dividend = divisor * quotient;
+        const divisor = Math.floor(Math.random() * max) + 1;
+        const quotient = Math.floor(Math.random() * 10);
+        setNum1(quotient);
+        setNum2(divisor);
+        setAnswer("");
+      } else {
+        // ✅ EXACT DIVISION
+        const divisor = Math.floor(Math.random() * (max / 2)) + 1;
+        const quotient = Math.floor(Math.random() * 10) + 1;
+        const dividend = divisor * quotient;
 
-      setNum1(dividend);
-      setNum2(divisor);
-      setAnswer("");
+        setNum1(dividend);
+        setNum2(divisor);
+        setAnswer("");
       }
     }
   };
-
-  useEffect(() => {
-    generateQuestion();
-  }, [operation, level]);
 
   const getCorrectAnswer = () => {
     switch (operation) {
@@ -120,15 +125,15 @@ const x =0;
       }
       case "mul":
         return num1 * num2;
-      case "div":{  
-        return ( Math.floor((num2/num1) * 100) / 100)
+      case "div": {
+        return Math.floor((num2 / num1) * 100) / 100;
       }
       default:
         return 0;
     }
   };
-  console.log( Math.floor((num2/num1) * 100) / 100);
-  
+  console.log(Math.floor((num2 / num1) * 100) / 100);
+
   const getExplain = () => {
     switch (operation) {
       case "add":
@@ -196,53 +201,87 @@ const x =0;
         return "?";
     }
   };
+  useEffect(() => {
+    generateQuestion();
+    letsGo.play();
+  }, [operation, level]);
 
-  
-  const checkAnswer=()=>{
-    if(Number(answer)==getCorrectAnswer()){
+  const checkAnswer = () => {
+    if (Number(answer) == getCorrectAnswer()) {
       correctSound.play();
-
-      const newScore=score+1;
+      correctAnswer.play();
+      const newScore = score + 1;
       setScore(newScore);
       setMessage("✅ Correct!");
-
-      // ⭐ STAR EVERY 5 CORRECT
-      if(newScore%5===0){
-        setStars(s=>s+1);
+      if (newScore % 5 === 0) {
+        setStars((s) => s + 1);
         starSound.play();
       }
-
-      setTimeout(()=>{
+      setTimeout(() => {
         setMessage("");
         generateQuestion();
-      },800);
-
-    }else{
+      }, 800);
+    } else {
       wrongSound.play();
+      wrongAnswer.play();
       setMessage("❌ Wrong!");
-      setTimeout(()=>setMessage(""),800);
+      setTimeout(() => setMessage(""), 800);
     }
   };
 
+  function playSound(src) {
+    return new Promise((resolve) => {
+      const audio = new Audio(src);
+      audio.play();
+      audio.onended = resolve; // انتظر ما يخلص قبل ما يكمل
+    });
+  }
+  console.log(num1, num2);
 
+  const hintFnc = async () => {
+    await playSound("/sound/putNumber.mp3");
+    if (num1 > num2) {
+      await playSound(`/sound/${num1}.mp3`);
+    } else {
+      await playSound(`/sound/${num2}.mp3`);
+    }
+    await playSound("/sound/inYourHead.mp3");
+    await playSound("/sound/thenPutNumber.mp3");
+     if (num1 > num2) {
+      await playSound(`/sound/${num2}.mp3`);
+    } else {
+      await playSound(`/sound/${num1}.mp3`);
+    }
+    await playSound("/sound/onYourHand.mp3");
+    await playSound("/sound/countIncrease.mp3");
+     if (num1 > num2) {
+      await playSound(`/sound/${num1}.mp3`);
+    } else {
+      await playSound(`/sound/${num2}.mp3`);
+    }
+    await playSound("/sound/closeFingers.mp3");
+  };
   return (
     <div className="game-page">
+      <div style={{ width: 400, marginTop: 100 }}>
+        <Lottie animationData={animationData} loop={true} />
+        <button onClick={hintFnc} className="hintbtn">
+          hint
+        </button>
+      </div>
       <div className="game-card">
         {/* HEADER */}
         <div className="game-header">
           <h2>🧮 Math Game</h2>
           <span className="score">Correct: {score}</span>
-          
         </div>
-        <div className="stars">
-        {"⭐".repeat(stars)}
-      </div>
-         <div className="progress-bar">
-        <div
-          className="progress-fill"
-          style={{width:`${(score%10)*10}%`}}
-        />
-      </div>
+        <div className="stars">{"⭐".repeat(stars)}</div>
+        <div className="progress-bar">
+          <div
+            className="progress-fill"
+            style={{ width: `${(score % 10) * 10}%` }}
+          />
+        </div>
 
         {/* HINT */}
         {support && (
