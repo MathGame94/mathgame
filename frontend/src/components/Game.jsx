@@ -239,7 +239,8 @@ const Game = () => {
   console.log(num1, num2);
 
   const hintFnc = async () => {
-    await playSound("/sound/putNumber.mp3");
+    if (operation==="add"){
+ await playSound("/sound/putNumber.mp3");
     if (num1 > num2) {
       await playSound(`/sound/${num1}.mp3`);
     } else {
@@ -260,6 +261,8 @@ const Game = () => {
       await playSound(`/sound/${num2}.mp3`);
     }
     await playSound("/sound/closeFingers.mp3");
+    }
+   
   };
   return (
     <div className="game-page">

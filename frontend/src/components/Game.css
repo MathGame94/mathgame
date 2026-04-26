@@ -1,11 +1,5 @@
   /* ===== BACKGROUND ===== */
-.hintbtn{
-  width: 80px;
-  height: 30px;
-  border-radius: 10px;
-    background: linear-gradient(145deg,#ebff94,#e2df0a);
-  cursor:pointer;
-}
+
 
 .game-page {
   min-height: 100vh;
@@ -39,7 +33,13 @@ gap: 100px;
     opacity: .25;
     animation: floatDots 40s linear infinite;
   }
-
+.hintbtn{
+  width: 80px;
+  height: 30px;
+  border-radius: 10px;
+    background: linear-gradient(145deg,#ebff94,#e2df0a);
+  cursor:pointer;
+}
   @keyframes floatDots {
     from { transform: translateY(0); }
     to { transform: translateY(-600px); }
