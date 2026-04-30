@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./LongOperation.css";
-
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const SubtractionTool = ({ num1, num2 }) => {
   const digits1 = num1.toString().split("");
   const digits2 = num2.toString().split("");
@@ -10,8 +11,8 @@ const SubtractionTool = ({ num1, num2 }) => {
   const [result1, setResult1] = useState("");
   const [result2, setResult2] = useState("");
   const [result3, setResult3] = useState("");
- 
-
+  const biggerNum = Math.max(num1,num2);
+  const smallerNum = Math.min(num1,num2)
   const handleClear = () => {
     setTopValue1("");
     setTopValue2("")
@@ -19,6 +20,65 @@ const SubtractionTool = ({ num1, num2 }) => {
     setResult2("");
     setResult3("");
   };
+
+
+     const checkResult3 = () => {
+    if(biggerNum.toString()[1] >= smallerNum.toString()[1]){
+if (result3 !== (Number(biggerNum.toString()[1]) - Number(smallerNum.toString()[1])).toString()) {
+      toast.error(`الرقم ${result3} خطأ`);
+      setResult3("");
+    } else {
+      toast.success(`الرقم ${result3} صح`);
+    }
+    }else if(biggerNum.toString()[1] < smallerNum.toString()[1]){
+    if (Number(result3) !== Number(biggerNum.toString()[1])+10 -Number(smallerNum.toString()[1]) ) {
+      toast.error(`الرقم ${result3} خطأ`);
+      setResult3("");
+    } else {      
+      toast.success(`الرقم ${result3} صح`);
+    }
+  }
+  };
+
+    const checkResult2 = () => {
+    if(biggerNum.toString()[1] >= smallerNum.toString()[1]){
+if (result2 !== (Number(biggerNum.toString()[0]) - Number(smallerNum.toString()[0])).toString()) {
+      toast.error(`الرقم ${result2} خطأ`);
+      setResult2("");
+    } else {
+      toast.success(`الرقم ${result2} صح`);
+    }
+    }else if(biggerNum.toString()[1] < smallerNum.toString()[1]) {
+    if (Number(result2) !== (Number(biggerNum.toString()[0])-1 - Number(smallerNum.toString()[0]))) {
+      toast.error(`الرقم ${result2} خطأ`);
+      setResult2("");
+    } else {      
+      toast.success(`الرقم ${result2} صح`);
+    }
+  }
+  };
+   useEffect(() => {
+    if ( biggerNum.toString()[1] >= smallerNum.toString()[1] && result3) {
+      checkResult3();
+    }else {
+       if ( biggerNum.toString()[1] < smallerNum.toString()[1] && result3 && topValue2){
+        checkResult3()  
+       }
+    }
+  }, [result3 , topValue2]);
+
+   useEffect(() => {
+    if ( biggerNum.toString()[1] >= smallerNum.toString()[1] && result2) {
+      checkResult2();
+    }else {
+       if ( biggerNum.toString()[1] < smallerNum.toString()[1] && result2 && topValue1){
+        checkResult2()  
+       }
+    }
+  }, [result2]);
+
+  console.log( Number(biggerNum.toString()[1])+10 -Number(smallerNum.toString()[1]));
+  
   return (
     <div className="long-op">
       {digits1[0]>digits2[0] && digits1[1] < digits2[1] && (
@@ -75,6 +135,7 @@ const SubtractionTool = ({ num1, num2 }) => {
       <hr />
       <div className="row">
         <input
+        disabled
           className="cell result"
           value={result1}
           onChange={(e) => {
@@ -100,6 +161,9 @@ const SubtractionTool = ({ num1, num2 }) => {
       <button className="clearBTN" onClick={handleClear}>
         clear
       </button>
+         <ToastContainer   position="bottom-center"
+  style={{ bottom: "20%", transform: "translateY(-50%)" }}
+ autoClose={1000} />
     </div>
   );
 };
