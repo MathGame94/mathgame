@@ -1,0 +1,152 @@
+.frontPage {
+  min-height: 100vh;
+  direction: rtl;
+  padding: 48px 20px;
+  box-sizing: border-box;
+  font-family: "Segoe UI", Tahoma, sans-serif;
+  background:
+    radial-gradient(circle at top right, rgba(61, 107, 138, 0.12), transparent 28%),
+    radial-gradient(circle at bottom left, rgba(217, 105, 90, 0.12), transparent 30%),
+    #fbf7f0;
+  color: #2a2730;
+}
+
+.hero {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+
+.heroBadge {
+  display: inline-block;
+  padding: 6px 14px;
+  margin-bottom: 14px;
+  border-radius: 999px;
+  background: #e8f0f4;
+  color: #3d6b8a;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.hero h1 {
+  margin: 0;
+  font-size: clamp(28px, 5vw, 46px);
+  line-height: 1.4;
+  font-weight: 800;
+  color: #2a2730;
+}
+
+.hero p {
+  margin: 12px 0 0;
+  font-size: clamp(15px, 2.5vw, 18px);
+  color: #6b6470;
+  line-height: 1.8;
+}
+
+.cardsPage {
+  width: min(1100px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+}
+
+.programCard {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e5ddd0;
+  border-radius: 16px;
+  background: #fff;
+  cursor: pointer;
+  text-align: inherit;
+  box-shadow: 0 12px 30px rgba(42, 39, 48, 0.08);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+
+.programCard:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 18px 42px rgba(42, 39, 48, 0.13);
+  border-color: #3d6b8a;
+}
+
+.programCard:active {
+  transform: translateY(-2px);
+}
+
+.imageWrap {
+  height: 220px;
+  background: #f3ece0;
+  overflow: hidden;
+}
+
+.imageWrap img {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 18px 20px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.cardBody h2 {
+  margin: 0;
+  font-size: 19px;
+  color: #2a2730;
+}
+
+.cardBody span {
+  flex-shrink: 0;
+  padding: 7px 13px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 700;
+}
+
+.programCard.math .cardBody span {
+  background: #e8f0f4;
+  color: #3d6b8a;
+}
+
+.programCard.arabic .cardBody span {
+  background: #faf1e0;
+  color: #9a6a1d;
+}
+
+.programCard.physics .cardBody span {
+  background: #eaf1ec;
+  color: #5b8266;
+}
+
+.programCard.chemistry .cardBody span {
+  background: #fbeae7;
+  color: #d9695a;
+}
+
+@media (max-width: 760px) {
+  .frontPage {
+    padding: 32px 14px;
+  }
+
+  .cardsPage {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .imageWrap {
+    height: 190px;
+  }
+
+  .cardBody {
+    padding: 16px;
+  }
+
+  .cardBody h2 {
+    font-size: 17px;
+  }
+}
